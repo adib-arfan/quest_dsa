@@ -28,20 +28,77 @@ Node* prepend(int item , Node* head)
 
 
 
+Node* append(int item , Node* head)
+{
+    Node* new_node = create_node(item , NULL); // jehetu sesh er node tai kauke point kore na 
+
+    if(head == NULL) // tar mane new node tai first node ar aitai return kore dibe 
+    {
+        return new_node;
+    }
+
+    //ar naile loop chalai shesh node ta ber korte hobe
+
+    Node* current_node = head ; // prothome head jake point kore ase take diye start korbe
+
+    //sesh node ta kauke nirdesh korbe na , er next hobe NULL
+
+    while(current_node->nxt != NULL)
+    {
+        current_node = current_node->nxt;
+    }
+
+    //current node ta sesh node, tai er porer node ta hobe amdr new node
+
+    current_node->nxt = new_node;
+
+    return head;
+}
+
+
+void print_linked_list(Node* head)
+{
+    Node* current_node = head;
+
+    while(current_node != NULL)
+    {
+        cout << current_node->data << endl;
+        current_node = current_node->nxt;
+    }
+
+    cout << "\n\n\n" ;
+}
+
 
 int main()
 {
-    Node *n1 , *n2 , *head ;
+    // Node *n1 , *n2 , *head ;
 
-    n1 = create_node(10, NULL); // aita akhn prothom node
-    head = n1 ; // prothom node k point kore head
+    // n1 = create_node(10, NULL); // aita akhn prothom node
+    // head = n1 ; // prothom node k point kore head
 
-    head = prepend(20 , head); // new node ta head jake point kortesilo , take point korbe
-                               // are new node ta k abr point korbe head
+    // head = prepend(20 , head); // new node ta head jake point kortesilo , take point korbe
+    //                            // are new node ta k abr point korbe head
 
-    n2 = head; // first node tar pointer , head o first node takei point kore
+    // n2 = head; // first node tar pointer , head o first node takei point kore
 
-    cout << "The first data is " << n2->data << endl ;
-    cout << "The second data is " << n1->data << endl;
+    // cout << "The first data is " << n2->data << endl ;
+    // cout << "The second data is " << n1->data << endl;
+
+
+
+    Node *n1 , *head;
+
+    n1 = create_node(10 , NULL);
+    head = n1 ;
+
+    print_linked_list(head);
+
+    head = append(20 , head);
+    print_linked_list(head);
+
+    head = append(30 , head);
+    print_linked_list(head);
+
 
 }
