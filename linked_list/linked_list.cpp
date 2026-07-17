@@ -70,6 +70,65 @@ void print_linked_list(Node* head)
 }
 
 
+
+
+
+Node* remove_node(Node* head , Node* node) // head ar jei node ta dlt korbo sei node tar pointer , head ptr ta return korbe 
+{
+    if(node == head)
+    {
+        head = node->nxt ;
+
+        delete node;
+
+        return head;
+    }
+
+    //code aikhane ashche mane node ll er first node na 
+    //node er ager node ta khuje ber korte hobe 
+    //sei node ta current_node hoile node hobe current_node->nxt
+
+    Node* current_node = head;
+
+    while(current_node != NULL)
+    {
+        if(current_node->nxt == node)
+        {
+            break;
+        }
+
+        current_node = current_node->nxt ; // aita diye just traverse kortesi arki , oijonno to update kora lagbe current_node take
+    }
+
+    if(current_node == NULL)// mane oi node ta nai arki list e
+    {
+        return head ;
+    }
+
+    //jehetu node muche felte chaitesi tai current_node->nxt akhn node er porer node take point korbe
+
+    current_node->nxt = node->nxt ;
+
+    delete node;
+
+    return head;
+}
+
+
+
+
+void insert_node(Node *node , int item) // *node hocche jar pore amra notun node ta insert korbo
+{
+    Node* new_node = create_node(item , node->nxt);
+
+    node->nxt = new_node;
+}
+
+
+
+
+
+
 int main()
 {
     // Node *n1 , *n2 , *head ;
