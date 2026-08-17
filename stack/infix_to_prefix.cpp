@@ -87,7 +87,7 @@ string infix_to_prefix(string infix)
 
         else
         {
-            while (top != -1 && operand_stck[top] != '(' &&(precedence(operand_stck[top]) > precedence(c) ||(precedence(c) == precedence(operand_stck[top]) && !is_right_associative(c))))
+            while (top != -1 && operand_stck[top] != '(' &&(precedence(operand_stck[top]) > precedence(c) ||(precedence(c) == precedence(operand_stck[top]) && is_right_associative(c))))
             {
                prefix += operand_stck[top--];
             }
